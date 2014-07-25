@@ -72,7 +72,7 @@ public class Login {
 		
 		
 		// let the background to be a label
-		ImageIcon bg = new ImageIcon("E:\\myjava\\background.jpg");
+		ImageIcon bg = new ImageIcon("image/background.jpg");
 		JLabel label = new JLabel(bg);
 		// let the size of the label to be the size of the background pic
 		label.setBounds(0, 0, bg.getIconWidth(), bg.getIconHeight());
