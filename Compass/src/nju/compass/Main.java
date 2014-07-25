@@ -1,22 +1,23 @@
 package nju.compass;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.Box;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class Main {
 
 	JFrame frame;
-	private JLayeredPane layeredPane;
+	JPanel panelCenter;
 
 	/**
 	 * Launch the application.
@@ -48,128 +49,99 @@ public class Main {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1024, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
-		JMenuBar menuBar = new JMenuBar();
-		frame.setJMenuBar(menuBar);
+		JPanel panelTop = new JPanel();
+		panelTop.setBackground(Color.WHITE);
+		frame.getContentPane().add(panelTop, BorderLayout.NORTH);
 
-		JMenu mnFile = new JMenu("File");
-		menuBar.add(mnFile);
+		Component verticalStrut = Box.createVerticalStrut(20);
+		panelTop.add(verticalStrut);
 
-		JMenuItem mntmSettings = new JMenuItem("Settings");
-		mnFile.add(mntmSettings);
+		JButton btnFile = new JButton("File");
+		btnFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		panelTop.add(btnFile);
 
-		JMenuItem mntmLogOut = new JMenuItem("Log out");
-		mnFile.add(mntmLogOut);
+		JButton btnProfit = new JButton("Profit");
+		btnProfit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((CardLayout) panelCenter.getLayout()).show(panelCenter,
+						"Profit");
+			}
+		});
+		panelTop.add(btnProfit);
 
-		JMenuItem mntmExit = new JMenuItem("Exit");
-		mnFile.add(mntmExit);
+		JButton btnNdf = new JButton("NDF");
+		btnNdf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((CardLayout) panelCenter.getLayout()).show(panelCenter, "NDF");
+			}
+		});
+		panelTop.add(btnNdf);
 
-		JMenu mnProfit = new JMenu("Profit");
-		menuBar.add(mnProfit);
+		JButton btnDf = new JButton("DF");
+		btnDf.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((CardLayout) panelCenter.getLayout()).show(panelCenter, "DF");
+			}
+		});
+		panelTop.add(btnDf);
 
-		JMenu mnNdf = new JMenu("NDF");
-		menuBar.add(mnNdf);
+		JButton btnInterestRate = new JButton("Interest Rate");
+		btnInterestRate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((CardLayout) panelCenter.getLayout()).show(panelCenter,
+						"Interest");
+			}
+		});
+		panelTop.add(btnInterestRate);
 
-		JMenu mnDf = new JMenu("DF");
-		menuBar.add(mnDf);
+		JButton btnMessages = new JButton("Messages");
+		btnMessages.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((CardLayout) panelCenter.getLayout()).show(panelCenter, "Msg");
+			}
+		});
+		panelTop.add(btnMessages);
 
-		JMenu mnInterestRate = new JMenu(" Interest Rate");
-		menuBar.add(mnInterestRate);
+		JButton btnHelp = new JButton("Help");
+		btnHelp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((CardLayout) panelCenter.getLayout())
+						.show(panelCenter, "Help");
+			}
+		});
+		panelTop.add(btnHelp);
 
-		JMenu mnInfoCenter = new JMenu("Info Center");
-		menuBar.add(mnInfoCenter);
+		panelCenter = new JPanel();
+		frame.getContentPane().add(panelCenter, BorderLayout.CENTER);
+		panelCenter.setLayout(new CardLayout(0, 0));
 
-		JMenu mnHelp = new JMenu("Help");
-		menuBar.add(mnHelp);
-		frame.getContentPane().setLayout(new CardLayout(0, 0));
-
-		layeredPane = new JLayeredPane();
-		frame.getContentPane().add(layeredPane, "name_3732245744102");
-		layeredPane.setLayout(new CardLayout(0, 0));
-
-		final JPanel panelProfit = new JPanel();
-		layeredPane.add(panelProfit, "name_6109504846800");
+		JPanel panelProfit = new JPanel();
+		panelCenter.add(panelProfit, "Profit");
 
 		JLabel lblProfit = new JLabel("Profit");
 		panelProfit.add(lblProfit);
 
-		final JPanel panelNDF = new JPanel();
-		layeredPane.add(panelNDF, "name_3817484737611");
+		JPanel panelNDF = new JPanel();
+		panelCenter.add(panelNDF, "NDF");
 
-		JLabel lblNdf = new JLabel("NDF");
-		panelNDF.add(lblNdf);
+		JLabel lblNewLabel = new JLabel("NDF");
+		panelNDF.add(lblNewLabel);
 
-		final JPanel panelDF = new JPanel();
-		layeredPane.add(panelDF, "name_3817461063280");
+		JPanel panelDF = new JPanel();
+		panelCenter.add(panelDF, "DF");
 
-		JLabel lblDf = new JLabel("DF");
-		panelDF.add(lblDf);
+		JPanel panelInterest = new JPanel();
+		panelCenter.add(panelInterest, "Interest");
 
-		final JPanel panelIR = new JPanel();
-		layeredPane.add(panelIR, "name_5947477216954");
+		JPanel panelMsg = new JPanel();
+		panelCenter.add(panelMsg, "Msg");
 
-		JLabel lblInterestRate = new JLabel("Interest Rate");
-		panelIR.add(lblInterestRate);
-
-		final JPanel panelInfo = new JPanel();
-		layeredPane.add(panelInfo, "name_5958069219876");
-
-		JLabel lblInfoCenter = new JLabel("Info Center");
-		panelInfo.add(lblInfoCenter);
-
-		mnNdf.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				panelProfit.setVisible(false);
-				panelDF.setVisible(false);
-				panelInfo.setVisible(false);
-				panelIR.setVisible(false);
-				panelNDF.setVisible(true);
-			}
-		});
-
-		mnDf.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				panelProfit.setVisible(false);
-				panelNDF.setVisible(false);
-				panelInfo.setVisible(false);
-				panelIR.setVisible(false);
-				panelDF.setVisible(true);
-			}
-		});
-
-		mnProfit.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				panelNDF.setVisible(false);
-				panelInfo.setVisible(false);
-				panelIR.setVisible(false);
-				panelDF.setVisible(false);
-				panelProfit.setVisible(true);
-			}
-		});
-
-		mnInterestRate.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				panelNDF.setVisible(false);
-				panelInfo.setVisible(false);
-				panelDF.setVisible(false);
-				panelProfit.setVisible(false);
-				panelIR.setVisible(true);
-			}
-		});
-
-		mnInfoCenter.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				panelNDF.setVisible(false);
-				panelDF.setVisible(false);
-				panelProfit.setVisible(false);
-				panelIR.setVisible(false);
-				panelInfo.setVisible(true);
-			}
-		});
+		JPanel panelHelp = new JPanel();
+		panelCenter.add(panelHelp, "Help");
 	}
 }
