@@ -50,7 +50,7 @@ public class Register extends JFrame {
         
 		// set background picture
 		JLabel lblNewLabel = new JLabel();
-		ImageIcon bg = new ImageIcon("E:\\myjava\\background.jpg");
+		ImageIcon bg = new ImageIcon("image/background.jpg");
 		lblNewLabel.setIcon(bg);
 		lblNewLabel.setBounds(0, 0, bg.getIconWidth(), bg.getIconHeight());
 		getLayeredPane().add(lblNewLabel, new Integer(Integer.MIN_VALUE));
