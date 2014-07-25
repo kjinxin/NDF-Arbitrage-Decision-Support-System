@@ -43,7 +43,7 @@ public class Delete {
 	
 	public static void main(String[] args)
 	{
-		String[] elements = {"heihei"};
+		String[] elements = {"haha"};
 		String[] property = {"MNAME"}; 
 		String table = "Member";
 		String[] type = {"char"}; 
