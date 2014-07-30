@@ -63,7 +63,8 @@ public class MainTest extends JFrame {
 		Dimension screenSize = kit.getScreenSize(); // 获取屏幕的尺寸
 		screenWidth = screenSize.width; // 获取屏幕的宽
 		screenHeight = screenSize.height; // 获取屏幕的高
-		
+		System.out.println(screenWidth);
+		System.out.println(screenHeight);
 		//主panel
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -59,6 +59,7 @@ public class CSH extends JFrame {
 		lblNewLabel_1.setIcon(new ImageIcon(CSH.class.getResource("/javax/swing/plaf/metal/icons/ocean/close.gif")));
 		lblNewLabel_1.setBounds(285, 0, 15, 15);
 		getContentPane().add(lblNewLabel_1);
+		
 		jp.setOpaque(false);
 	}
 }

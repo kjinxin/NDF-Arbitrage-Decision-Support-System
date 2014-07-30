@@ -1,16 +1,12 @@
 package nju.compass;
 
-import java.awt.Dimension;
-import java.awt.EventQueue;
-
-
-
 import java.awt.*;
 
 import javax.swing.*;
 
-
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+import org.jvnet.substance.skin.SubstanceMistAquaLookAndFeel;
+
 import java.awt.event.*;
 
 public class Login {
@@ -31,7 +27,7 @@ public class Login {
 			public void run() {
 				try {
 					Login window = new Login();
-					window.frame.setVisible(true);
+					//window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -52,7 +48,6 @@ public class Login {
 	private void initialize() {
 		frame = new JFrame("Compass :: online service");
 		frame.setUndecorated(true);
-		
 		// move the window
 		frame.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {  //按下（mousePressed 不是点击，而是鼠标被按下没有抬起）
@@ -98,7 +93,10 @@ public class Login {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel.setLabelFor(lblNewLabel);
 		
+
 		textField = new JTextField();
+		textField.setBorder(BorderFactory.createLoweredBevelBorder());		// 凹效果
+		//textField.setBorder(BorderFactory.createRaisedBevelBorder());     // 凸效果
 		textField.setBounds(218, 186, 80, 20);
 		textField.setForeground(Color.WHITE);
 		textField.setBackground(Color.DARK_GRAY);
@@ -110,12 +108,14 @@ public class Login {
 		lblPassword.setHorizontalAlignment(SwingConstants.LEFT);
 		
 		btnNewButton = new JButton("Login");
+		btnNewButton.setBorder(BorderFactory.createRaisedBevelBorder());     // 凸效果
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 15));
 		btnNewButton.setBounds(82, 256, 93, 23);
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setBackground(Color.DARK_GRAY);
 		
 		btnRegister = new JButton("Register");
+		btnRegister.setBorder(BorderFactory.createRaisedBevelBorder());     // 凸效果
 		btnRegister.setFont(new Font("Arial", Font.BOLD, 15));
 		btnRegister.addMouseListener(new MouseAdapter() {
 			@Override
@@ -145,6 +145,7 @@ public class Login {
 		frame.getContentPane().add(btnRegister);
 		
 		passwordField = new JPasswordField();
+		passwordField.setBorder(BorderFactory.createLoweredBevelBorder());		// 凹效果
 		passwordField.setForeground(Color.WHITE);
 		passwordField.setBackground(Color.DARK_GRAY);
 		passwordField.setBounds(218, 216, 80, 20);
@@ -183,5 +184,6 @@ public class Login {
 		lblJinxin.setBounds(435, 0, 15, 15);
 		frame.getContentPane().add(lblJinxin);
 		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel, textField, lblPassword, btnNewButton, btnRegister}));
+		frame.setVisible(true);
 	}
 }
