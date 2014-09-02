@@ -10,8 +10,9 @@ public class Select {
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Connect.URL, Connect.USERNAME, Connect.PASSWORD);
+			
 			stmt = con.createStatement();
 			String select = "select * from " + table;
 			System.out.println(select);
@@ -49,8 +50,9 @@ public class Select {
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Connect.URL, Connect.USERNAME, Connect.PASSWORD);
+			
 			stmt = con.createStatement();
 			for(int i = 0; i < elements.length; i++) {
 				if(type[i].equals("char"))
@@ -92,16 +94,16 @@ public class Select {
 	}
 	
 	//°´Ê±¼äÅÅÐò
-	public static int SelectAllTime(String table, ArrayList<String> selection) {
+	public static int SelectRow(String table, ArrayList<String> selection, int row) {
 		int count = 0;
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		try {
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Connect.URL, Connect.USERNAME, Connect.PASSWORD);			
 			stmt = con.createStatement();
-			String select = "select * from " + table + " order by TIMEOFDAY DESC";
+			String select = "select * from " + table + " limit " + row + ",1";
 			System.out.println(select);
 			rs = stmt.executeQuery(select);
 			
@@ -130,10 +132,13 @@ public class Select {
 	
 	public static void main(String[] args)
 	{
-		ArrayList<String> result = new ArrayList<String>();
-		int count = Select.SelectAll("Member", result);
-		for(int i = 0; i < result.size(); i++)
-			System.out.println(result.get(i));
+		String[] elements = {"ab"};
+		String[] property = {"name"};
+		String table = "member";
+		String[] type = {"char"};
+		String[] restraints = {"="};
+		ArrayList<String> selection = new ArrayList<String>();
+		int count = Select.SelectElement(elements, property, table, type, restraints, selection);
 		System.out.println(count);
 	}
 }

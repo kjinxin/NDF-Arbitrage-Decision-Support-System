@@ -10,8 +10,9 @@ public class Update {
 		Statement stmt = null;
 		int rs = 0;
 		try {
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Connect.URL, Connect.USERNAME, Connect.PASSWORD);
+			
 			stmt = con.createStatement();
 
 			for(int i = 0; i < new_elements.length; i++) {

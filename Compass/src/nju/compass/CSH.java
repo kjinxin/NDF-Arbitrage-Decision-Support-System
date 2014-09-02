@@ -1,19 +1,25 @@
 package nju.compass;
 
 import java.awt.*;
-import javax.swing.border.EmptyBorder;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
+import java.io.File;
+import java.io.IOException;
 
 public class CSH extends JFrame {
 
-	private JPanel contentPane;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					CSH frame = new CSH();
@@ -29,9 +35,8 @@ public class CSH extends JFrame {
 	 * Create the frame.
 	 */
 	public CSH() {
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 300, 200);
-		setUndecorated(true);
+		setResizable(false);
 		int windowWidth = getWidth();                    //获得窗口宽
         int windowHeight = getHeight();                  //获得窗口高
         Toolkit kit = Toolkit.getDefaultToolkit();             //定义工具包
@@ -41,25 +46,13 @@ public class CSH extends JFrame {
         setLocation(screenWidth/2-windowWidth/2, screenHeight/2-windowHeight/2);//设置窗口居中显示
         
         // set background picture
-		JLabel lblNewLabel = new JLabel();
-		ImageIcon bg = new ImageIcon("image/background.jpg");
-		lblNewLabel.setIcon(bg);
-		lblNewLabel.setBounds(0, 0, bg.getIconWidth(), bg.getIconHeight());
-		getLayeredPane().add(lblNewLabel, new Integer(Integer.MIN_VALUE));
-		JPanel jp = (JPanel) getContentPane();
-		getContentPane().setLayout(null);
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				setVisible(false);
-			}
-		});
-		lblNewLabel_1.setIcon(new ImageIcon(CSH.class.getResource("/javax/swing/plaf/metal/icons/ocean/close.gif")));
-		lblNewLabel_1.setBounds(285, 0, 15, 15);
-		getContentPane().add(lblNewLabel_1);
-		
-		jp.setOpaque(false);
+		JLabel contentPane = new JLabel(){
+			public void paintComponent(Graphics g){
+				  try{
+				    g.drawImage(ImageIO.read(new    File("image/image_2.jpg")),0
+				                            ,0,this.getWidth(),this.getHeight(),this);
+				   }catch(IOException e){}
+				  }};
+		setContentPane(contentPane);
 	}
 }

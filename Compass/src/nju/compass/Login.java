@@ -2,32 +2,37 @@ package nju.compass;
 
 import java.awt.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
-
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import org.jvnet.substance.skin.SubstanceMistAquaLookAndFeel;
+import database.Select;
 
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Login {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JLabel lblPassword;
 	private JButton btnNewButton;
 	private JButton btnRegister;
-	private JPasswordField passwordField;
-	private JLabel lblJinxin;
 	static Point origin = new Point();  //全局的位置变量，用于表示鼠标在窗口上的位置
+	private JPasswordField passwordField;
+	private JTextField textField;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				System.setProperty( "Quaqua.tabLayoutPolicy","wrap");
+				try	{
+				      UIManager.setLookAndFeel("ch.randelshofer.quaqua.QuaquaLookAndFeel");    
+				}	catch(Exception e){}
+				JFrame.setDefaultLookAndFeelDecorated(true); 
+				JDialog.setDefaultLookAndFeelDecorated(true);
 				try {
-					Login window = new Login();
-					//window.frame.setVisible(true);
+					new Login();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,37 +52,19 @@ public class Login {
 	 */
 	private void initialize() {
 		frame = new JFrame("Compass :: online service");
-		frame.setUndecorated(true);
-		// move the window
-		frame.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {  //按下（mousePressed 不是点击，而是鼠标被按下没有抬起）
-                    origin.x = e.getX();  //当鼠标按下的时候获得窗口当前的位置
-                    origin.y = e.getY();
-            }
-		});
-		frame.addMouseMotionListener(new MouseMotionAdapter() {
-            public void mouseDragged(MouseEvent e) {  //拖动（mouseDragged 指的不是鼠标在窗口中移动，而是用鼠标拖动）
-              
-                    Point p = frame.getLocation();  //当鼠标拖动时获取窗口当前位置
-                    //设置窗口的位置
-                    //窗口当前的位置 + 鼠标当前在窗口的位置 - 鼠标按下的时候在窗口的位置
-                    frame.setLocation(p.x + e.getX() - origin.x, p.y + e.getY() - origin.y);
-            }
-		});
+		Image icon = Toolkit.getDefaultToolkit().getImage("image/image_2.jpg");   
+		frame.setIconImage(icon);
+		frame.setResizable(false);
+		JPanel contentPane = new JPanel(){
+			public void paintComponent(Graphics g){
+			  try{
+			    g.drawImage(ImageIO.read(new    File("image/pic_11.jpg")),0
+			                            ,0,this.getWidth(),this.getHeight(),this);
+			   }catch(IOException e){}
+			  }};
+		frame.setContentPane(contentPane);
+		frame.setBounds(100, 100, 450, 334);
 		
-		
-		// let the background to be a label
-		ImageIcon bg = new ImageIcon("image/background.jpg");
-		JLabel label = new JLabel(bg);
-		// let the size of the label to be the size of the background pic
-		label.setBounds(0, 0, bg.getIconWidth(), bg.getIconHeight());
-		// add the pic to the second layer of frame
-		frame.getLayeredPane().add(label, new Integer(Integer.MIN_VALUE));
-		JPanel jp = (JPanel) frame.getContentPane();
-		jp.setOpaque(false);
-		
-		
-		frame.setBounds(100, 100, 450, 300);
 		int windowWidth = frame.getWidth();                    //获得窗口宽
         int windowHeight = frame.getHeight();                  //获得窗口高
         Toolkit kit = Toolkit.getDefaultToolkit();             //定义工具包
@@ -87,35 +74,57 @@ public class Login {
         frame.setLocation(screenWidth/2-windowWidth/2, screenHeight/2-windowHeight/2);//设置窗口居中显示
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel lblNewLabel = new JLabel("Account");
-		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 15));
-		lblNewLabel.setBounds(125, 186, 66, 20);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel.setLabelFor(lblNewLabel);
+		JLabel lbAccount = new JLabel("Account");
+		lbAccount.setFont(new Font("Arial", Font.BOLD, 16));		
+		lbAccount.setForeground(new Color(0xfa, 0xfa, 0xfa));
+		lbAccount.setBounds(118, 190, 80, 20);
 		
-
 		textField = new JTextField();
-		textField.setBorder(BorderFactory.createLoweredBevelBorder());		// 凹效果
-		//textField.setBorder(BorderFactory.createRaisedBevelBorder());     // 凸效果
-		textField.setBounds(218, 186, 80, 20);
-		textField.setForeground(Color.WHITE);
-		textField.setBackground(Color.DARK_GRAY);
+		textField.setBounds(220, 186, 100, 30);
+		contentPane.add(textField);
 		textField.setColumns(10);
+
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Arial", Font.BOLD, 16));
+		lblPassword.setForeground(new Color(0xfa, 0xfa, 0xfa));
+		lblPassword.setBounds(118, 220, 100, 20);
+		contentPane.add(lblPassword);
 		
-		lblPassword = new JLabel("Password");
-		lblPassword.setFont(new Font("Arial", Font.BOLD, 15));
-		lblPassword.setBounds(125, 216, 83, 20);
-		lblPassword.setHorizontalAlignment(SwingConstants.LEFT);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(220, 216, 100, 30);
+		contentPane.add(passwordField);
 		
 		btnNewButton = new JButton("Login");
-		btnNewButton.setBorder(BorderFactory.createRaisedBevelBorder());     // 凸效果
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 15));
-		btnNewButton.setBounds(82, 256, 93, 23);
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setBackground(Color.DARK_GRAY);
+		btnNewButton.setBounds(81, 256, 93, 23);
+		
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				String Name = textField.getText();
+				@SuppressWarnings("deprecation")
+				String Password = passwordField.getText();
+				String[] elements = {Name};
+				String[] property = {"name"};
+				String table = "member";
+				String[] type = {"char"};
+				String[] restraints = {"="};
+				ArrayList<String> selection = new ArrayList<String>();
+				int count = Select.SelectElement(elements, property, table, type, restraints, selection);
+				if(count <= 0)
+					JOptionPane.showMessageDialog(null, "This account doesn't exist", "Invalid Permission", JOptionPane.ERROR_MESSAGE);
+				else if(!selection.get(1).trim().equals(Password))
+					JOptionPane.showMessageDialog(null, "Invalid Password", "Invalid Permission", JOptionPane.ERROR_MESSAGE);
+				else
+				{
+					User.username = Name;
+					new Home();
+					frame.dispose();
+				}
+			}
+		});
 		
 		btnRegister = new JButton("Register");
-		btnRegister.setBorder(BorderFactory.createRaisedBevelBorder());     // 凸效果
 		btnRegister.setFont(new Font("Arial", Font.BOLD, 15));
 		btnRegister.addMouseListener(new MouseAdapter() {
 			@Override
@@ -133,27 +142,13 @@ public class Login {
 				});
 			}
 		});
+		btnRegister.setBounds(253, 256, 109, 23);
 		
-		btnRegister.setBounds(241, 256, 109, 23);
-		btnRegister.setForeground(Color.WHITE);
-		btnRegister.setBackground(Color.DARK_GRAY);
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(lblNewLabel);
-		frame.getContentPane().add(textField);
-		frame.getContentPane().add(lblPassword);
-		frame.getContentPane().add(btnNewButton);
-		frame.getContentPane().add(btnRegister);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBorder(BorderFactory.createLoweredBevelBorder());		// 凹效果
-		passwordField.setForeground(Color.WHITE);
-		passwordField.setBackground(Color.DARK_GRAY);
-		passwordField.setBounds(218, 216, 80, 20);
-		frame.getContentPane().add(passwordField);
-		
-		JLabel lblNewLabel_1 = new JLabel("<html><u>CSH</u><html>");
-		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+		JLabel helpLabel = new JLabel("CSH");
+		helpLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		helpLabel.setForeground(new Color(0x48, 0x76, 0xff));
+		helpLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				EventQueue.invokeLater(new Runnable() {
@@ -168,22 +163,13 @@ public class Login {
 				});
 			}
 		});
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(372, 275, 54, 15);
-		frame.getContentPane().add(lblNewLabel_1);
+		helpLabel.setBounds(372, 275, 54, 15);
 		
-		lblJinxin = new JLabel("");
-		lblJinxin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				System.exit(0);
-			}
-		});
-		lblJinxin.setIcon(new ImageIcon(Login.class.getResource("/javax/swing/plaf/metal/icons/ocean/close-pressed.gif")));
-		lblJinxin.setBackground(Color.DARK_GRAY);
-		lblJinxin.setBounds(435, 0, 15, 15);
-		frame.getContentPane().add(lblJinxin);
-		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel, textField, lblPassword, btnNewButton, btnRegister}));
+		contentPane.setLayout(null);
+		contentPane.add(lbAccount);
+		contentPane.add(btnNewButton);
+		contentPane.add(btnRegister);
+		contentPane.add(helpLabel);
 		frame.setVisible(true);
 	}
 }

@@ -9,8 +9,8 @@ public class Insert {
 		int rs = 0;
 		try {
 			//建立数据库连接
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Connect.URL, Connect.USERNAME, Connect.PASSWORD);
 			
 			//创建命令
 			stmt = con.createStatement();
@@ -18,19 +18,19 @@ public class Insert {
 			//得到需要执行的指令
 			String value = "";
 			for(int i = 0; i < values.length; i++)
-				if(i < 2)
+				if(i < 4)
 					value = value + "'" + values[i] + "',";		//对字符串操作进行处理
-			value = value + "'" + values[2] + "'" +")";
+			value = value + values[4] +  ",'" + values[5] + "')";
 			
 			System.out.println(value);
 			
 			//生成指令
-			String insert = "insert into Member values(" + value;
+			String insert = "insert into member values(" + value;
 			System.out.println(insert);
 			
 			//执行指令
 			rs = stmt.executeUpdate(insert);
-
+			
 			System.out.println(rs);
 			//关闭与数据库的连接
 			if(stmt != null)
@@ -45,29 +45,27 @@ public class Insert {
 	}
 	
 	//插入到邮件表中
-	public static int InsertMail(String[] values) {
+	public static int InsertDeal(String[] values, String name) {
 		Connection con = null;
 		Statement stmt = null;
 		int rs = 0;
 		try {
 			//建立数据库连接
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
-			
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Connect.URL, Connect.USERNAME, Connect.PASSWORD);
 			//创建命令
 			stmt = con.createStatement();
 			
 			//得到需要执行的指令
 			String value = "";
-			for(int i = 0; i < values.length; i++)
-				if(i < 4)
-					value = value + "'" + values[i] + "',";		//对字符串操作进行处理
-			value = value + values[4] + "," + values[5] +")";
+			for(int i = 0; i < 3; i++)
+				value = value + "'" + values[i] + "',";		//对字符串操作进行处理
+			value = value + values[3] + "," + values[4] + "," + values[5] + ")";
 			
 			System.out.println(value);
 			
 			//生成指令
-			String insert = "insert into Mail values(" + value;
+			String insert = "insert into deal_" + name + " values(" + value;
 			System.out.println(insert);
 			
 			//执行指令
@@ -87,27 +85,26 @@ public class Insert {
 	}
 	
 	//插入到交易记录表中
-	public static int InsertTransaction(String[] values) {
+	public static int InsertNotification(String[] values, String name) {
 		Connection con = null;
 		Statement stmt = null;
 		int rs = 0;
 		try {
 			//建立数据库连接
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
-			
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Connect.URL, Connect.USERNAME, Connect.PASSWORD);			
 			//创建命令
 			stmt = con.createStatement();
 			
 			//得到需要执行的指令
 			String value = "";
-			value = value + "'" + values[0] + "'," + values[1] + ','
-					+ "'" + values[2] + "'" + values[3] + ")";		//对字符串操作进行处理
+			value = value + values[0] + ",'" + values[1] + "','" + values[2] + "',"
+					+ values[3] + "," + values[4] + ",'" + values[5] + "','" + values[6] + "')";		//对字符串操作进行处理
 			
 			System.out.println(value);
 			
 			//生成指令
-			String insert = "insert into TRANSCATION values(" + value;
+			String insert = "insert into noti_" + name + " values(" + value;
 			System.out.println(insert);
 			
 			//执行指令
@@ -121,35 +118,32 @@ public class Insert {
 				con.close();
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 		return rs;
 	}
 	
 	//插入到即期付款方的表中
-	public static int InsertI_P(String[] values) {
+	public static int InsertForward(String[] values) {
 		Connection con = null;
 		Statement stmt = null;
 		int rs = 0;
 		try {
 			//建立数据库连接
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
-			
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Connect.URL, Connect.USERNAME, Connect.PASSWORD);
 			//创建命令
 			stmt = con.createStatement();
 			
 			//得到需要执行的指令
 			String value = "";
-			value = value + "'" + values[0] + "'," + "'" + values[1] + "'";
-			for(int i = 1; i < values.length; i++)
-				value = value + "," +values[i];
-			value = value + ")";
+			value = value + "'" + values[0] + "'," + values[1] + "," 
+					+ values[2] + ",'" + values[3] + "')";
 			
 			System.out.println(value);
 			
 			//生成指令
-			String insert = "insert into I_P values(" + value;
+			String insert = "insert into forward values(" + value;
 			System.out.println(insert);
 			
 			//执行指令
@@ -169,29 +163,27 @@ public class Insert {
 	}
 	
 	//插入到远期收款方的表中
-	public static int InsertD_C(String[] values) {
+	public static int InsertList(String[] values) {
 		Connection con = null;
 		Statement stmt = null;
 		int rs = 0;
 		try {
 			//建立数据库连接
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
-			
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Connect.URL, Connect.USERNAME, Connect.PASSWORD);			
 			//创建命令
 			stmt = con.createStatement();
 			
 			//得到需要执行的指令
 			String value = "";
-			value = value + "'" + values[0] + "'," + "'" + values[1] + "'";
-			for(int i = 1; i < values.length; i++)
-				value = value + "," +values[i];
-			value = value + ")";
+			for(int i = 0; i < values.length - 1; i++)
+				value = value + values[i] + ",";
+			value = value + "'" + values[values.length - 1] + "')";
 			
 			System.out.println(value);
 			
 			//生成指令
-			String insert = "insert into D_C values(" + value;
+			String insert = "insert into list values(" + value;
 			System.out.println(insert);
 			
 			//执行指令
@@ -211,29 +203,28 @@ public class Insert {
 	}
 	
 	//插入到远期付款方的表中
-	public static int InsertD_P(String[] values) {
+	public static int InsertMarket(String[] values) {
 		Connection con = null;
 		Statement stmt = null;
 		int rs = 0;
 		try {
 			//建立数据库连接
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
-			
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Connect.URL, Connect.USERNAME, Connect.PASSWORD);
 			//创建命令
 			stmt = con.createStatement();
 			
 			//得到需要执行的指令
 			String value = "";
-			value = value + "'" + values[0] + "'," + "'" + values[1] + "'";
-			for(int i = 1; i < values.length; i++)
-				value = value + "," +values[i];
-			value = value + ")";
+			value = value + "'" + values[0] + "',";
+			for(int i = 1; i < values.length - 1; i++)
+				value = value + values[i] + ",";
+			value = value + "'" + values[values.length - 1] + "')";
 			
 			System.out.println(value);
 			
 			//生成指令
-			String insert = "insert into D_P values(" + value;
+			String insert = "insert into market values(" + value;
 			System.out.println(insert);
 			
 			//执行指令
@@ -252,67 +243,25 @@ public class Insert {
 		return rs;
 	}
 	
-	//插入到历史数据表中
-	public static int InsertHistory(String[] values) {
+	public static int InsertAccount(String[] values) {
 		Connection con = null;
 		Statement stmt = null;
 		int rs = 0;
 		try {
 			//建立数据库连接
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
-			
+			Class.forName("com.mysql.jdbc.Driver");
+			con = DriverManager.getConnection(Connect.URL, Connect.USERNAME, Connect.PASSWORD);
 			//创建命令
 			stmt = con.createStatement();
 			
 			//得到需要执行的指令
 			String value = "";
-			value = value + values[0] + "," + "'" + values[1] + "'," 
-					+ values[2] + "," + values[3] + ")";
+			value = value + "'" + values[0] + "'," + values[1] + "," + values[2] + ")";
 			
 			System.out.println(value);
 			
 			//生成指令
-			String insert = "insert into HISTORY_DATA values(" + value;
-			System.out.println(insert);
-			
-			//执行指令
-			rs = stmt.executeUpdate(insert);
-
-			System.out.println(rs);
-			//关闭与数据库的连接
-			if(stmt != null)
-				stmt.close();
-			if(con != null)
-				con.close();
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		return rs;
-	}
-	
-	public static int InsertPredict(String[] values) {
-		Connection con = null;
-		Statement stmt = null;
-		int rs = 0;
-		try {
-			//建立数据库连接
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Compass", "sa", "19891201");
-			
-			//创建命令
-			stmt = con.createStatement();
-			
-			//得到需要执行的指令
-			String value = "";
-			value = value + values[0] + "," + "'" + values[1] + "'," 
-					+ values[2] + "," + values[3] + ")";
-			
-			System.out.println(value);
-			
-			//生成指令
-			String insert = "insert into PERIDICT_DATA values(" + value;
+			String insert = "insert into account values(" + value;
 			System.out.println(insert);
 			
 			//执行指令
@@ -333,8 +282,8 @@ public class Insert {
 	
 	public static void main(String[] args)
 	{
-		String[] values = {"haha", "Profit", "haha@163.com"};
-		Insert.InsertMember(values);
-	
+		String[] values = {"0", "test2", "2014/8/27 10:42", "000000", "0.001", "bafwewlabala"};
+		String name = "hh";
+		Insert.InsertNotification(values, name);
 	}
 }
