@@ -1,6 +1,8 @@
 package nju.compass;
 
 
+import javax.swing.JOptionPane;
+
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
 import org.htmlparser.Tag;
@@ -78,8 +80,7 @@ public class GetNews extends java.util.TimerTask {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("抓取信息出错，出错信息为：");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Check your network connection", "Network failure", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		// 查询http://money.sohu.com/waihui_scrollnews/页面 滚动新闻的  标签 以及class
@@ -127,8 +128,7 @@ public class GetNews extends java.util.TimerTask {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("抓取信息出错，出错信息为：");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Check your network connection", "Network failure", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		
@@ -179,8 +179,7 @@ public class GetNews extends java.util.TimerTask {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("抓取信息出错，出错信息为：");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Check your network connection", "Network failure", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		// 查询http:http://forex.hexun.com/fxobservation/index.html页面 滚动新闻的  标签 以及class
@@ -227,8 +226,7 @@ public class GetNews extends java.util.TimerTask {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("抓取信息出错，出错信息为：");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Check your network connection", "Network failure", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		// 查询http://www.cs.com.cn/sylm/jsxw/中证网 页面 滚动新闻的  标签 以及class
@@ -274,8 +272,7 @@ public class GetNews extends java.util.TimerTask {
 						}
 					}
 				} catch (Exception e) {
-					System.out.println("抓取信息出错，出错信息为：");
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Check your network connection", "Network failure", JOptionPane.ERROR_MESSAGE);
 				}	
 				
 				

@@ -65,37 +65,37 @@ public class Panel_Forwarded {
 			public void mouseClicked(MouseEvent arg0) {
 				String item = (String) comboBox.getSelectedItem();
 				contentPane.remove(panel);
-				if (item == "1W")
+				if (item.equals("1W"))
 					panel = chart.getndf1WPanel();
 				else
-					if (item == "1M")
+					if (item.equals("1M"))
 						panel = chart.getndf1MPanel();
 					else
-						if (item == "2M")
+						if (item.equals("2M"))
 							panel = chart.getndf2MPanel();
 						else
-							if (item == "3M")
+							if (item.equals("3M"))
 								panel = chart.getndf3MPanel();
 							else
-								if (item == "6M")
+								if (item.equals("6M"))
 									panel = chart.getndf6MPanel();
 								else
-									if (item == "9M")
+									if (item.equals("9M"))
 										panel = chart.getndf9MPanel();
 									else
-										if (item == "1Y")
+										if (item.equals("1Y"))
 											panel = chart.getndf1YPanel();
 										else
-											if (item == "2Y")
+											if (item.equals("2Y"))
 												panel = chart.getndf2YPanel();
 											else
-												if (item == "3Y")
+												if (item.equals("3Y"))
 													panel = chart.getndf3YPanel();
 												else
-													if (item == "4Y")
+													if (item.equals("4Y"))
 														panel = chart.getndf4YPanel();
 													else
-														if (item == "5Y")
+														if (item.equals("5Y"))
 															panel = chart.getndf5YPanel();
 				
 				contentPane.add(panel);
@@ -123,22 +123,22 @@ public class Panel_Forwarded {
 			public void mouseClicked(MouseEvent arg0) {
 				String item = (String) comboBox_1.getSelectedItem();
 				contentPane.remove(panel);
-				if (item == "SW")
+				if (item.equals("SW"))
 					panel = chart.getdfSWPanel();
 				else
-					if (item == "1M")
+					if (item.equals("1M"))
 						panel = chart.getdf1MPanel();
 					else
-						if (item == "3M")
+						if (item.equals("3M"))
 							panel = chart.getdf3MPanel();
 						else
-							if (item == "6M")
+							if (item.equals("6M"))
 								panel = chart.getdf6MPanel();
 							else
-								if (item == "9M")
+								if (item.equals("9M"))
 									panel = chart.getdf9MPanel();
 								else
-									if (item == "1Y")
+									if (item.equals("1Y"))
 										panel = chart.getdf1YPanel();
 				contentPane.add(panel);
 				contentPane.repaint();

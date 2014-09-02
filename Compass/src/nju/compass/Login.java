@@ -4,6 +4,7 @@ import java.awt.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
 import database.Select;
 
 import java.awt.event.*;
@@ -34,7 +35,7 @@ public class Login {
 				try {
 					new Login();
 				} catch (Exception e) {
-					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, "Check your network connection", "Network failure", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

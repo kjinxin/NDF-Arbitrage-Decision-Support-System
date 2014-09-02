@@ -17,7 +17,7 @@ public class ForwardData  extends java.util.TimerTask {
 		return values;
 	}
 	public static String getHtmlContent(URL url, String encode) {
-		StringBuffer contentBuffer = new StringBuffer();
+		StringBuilder contentBuffer = new StringBuilder();
 
 		int responseCode = -1;
 		HttpURLConnection con = null;
