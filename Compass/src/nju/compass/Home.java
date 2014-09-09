@@ -70,12 +70,12 @@ public class Home extends JFrame {
 		setJMenuBar(menuBar);
 		
 		// MyAccount
-		panelfile = new Panel_File(this);
+		final JFrame frame = this;
 		JMenu mnFile = new JMenu("MyAccount");
 		mnFile.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-
+				panelfile = new Panel_File(frame);
 				contentPane = panelfile.getPanel();
 				setContentPane(contentPane);
 				contentPane.repaint();

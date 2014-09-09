@@ -19,7 +19,7 @@ public class Panel_Home extends java.util.TimerTask {
 	private JTable table;
 	private JPanel contentPane;
 	private GetNews news;
-	private Object[] columnNames = {"时间", "来源", "标题"};
+	private Object[] columnNames = {"Time", "Source", "Title"};
 	private Object[][] rowData;
 	private String [] linkData;
 	public Panel_Home() {

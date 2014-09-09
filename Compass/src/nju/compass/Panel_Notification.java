@@ -43,7 +43,7 @@ public class Panel_Notification {
 		dataSource.run(1);
 		//dataSource.run();
 		
-		columnNames = new Object []{"ÐòºÅ", "ÒÑ¶Á", "title", "time", "ÄÚÈÝ"};
+		columnNames = new Object []{"Number", "Read", "Title", "Time", "Content"};
 		rowData = dataSource.getrowData();
 		table = new JTable(rowData, columnNames){ 
 			@Override

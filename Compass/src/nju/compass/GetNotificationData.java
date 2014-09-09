@@ -31,8 +31,8 @@ public class GetNotificationData {
 				rowData[i][1] = "read";
 			rowData[i][2] = result.get(count * (rowNumber - i - 1) + 1);
 			rowData[i][3] = result.get(count * (rowNumber - i - 1) + 2);
-			rowData[i][4] = "编码： " + result.get(count * (rowNumber - i - 1) + 3)  + "\n套利操作说明： " + result.get(count * (rowNumber - i - 1) + 5)
-					+ "\n收益率： " + result.get(count * (rowNumber - i - 1) + 4);
+			rowData[i][4] = "Number: " + result.get(count * (rowNumber - i - 1) + 3)  + "\nArbitrage Instructions: " + result.get(count * (rowNumber - i - 1) + 5)
+					+ "\nYield Rate: " + result.get(count * (rowNumber - i - 1) + 4);
 		}
 		if (t == 1) {
 			rowData_t = new String [rowNumber][5];

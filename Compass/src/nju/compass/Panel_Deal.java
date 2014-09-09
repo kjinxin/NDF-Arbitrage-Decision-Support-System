@@ -39,7 +39,7 @@ public class Panel_Deal {
 		contentPane.setLayout(null);
 		
 		dataSource = new GetDealData();
-		columnNames = new Object[] {"序号", "下单时间", "结算时间", "操作说明", "金额（￥）", "金额（$）", "收益率(‰)"};
+		columnNames = new Object[] {"Number", "Order Time", "settlement Time", "Arbitrage instructions", "Amount（￥）", "Amount（$）", "Yield Rate(‰)"};
 		rowData = dataSource.getrowData();
 		table = new JTable (rowData, columnNames){ 
 			@Override

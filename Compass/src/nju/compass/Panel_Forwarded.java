@@ -45,8 +45,8 @@ public class Panel_Forwarded {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel label = new JLabel("NDF \u5E02\u573A\u884C\u60C5\uFF1A");
-		label.setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 15));
+		JLabel label = new JLabel("NDF Market:");
+		label.setFont(new Font("Arial", Font.BOLD, 15));
 		label.setBounds(35, 90, 150, 30);
 		contentPane.add(label);
 		
@@ -103,8 +103,8 @@ public class Panel_Forwarded {
 			}
 		});
 		
-		JLabel lblDf = new JLabel("DF\u8FDC\u671F\u5916\u6C47\u62A5\u4EF7\uFF1A");
-		lblDf.setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 15));
+		JLabel lblDf = new JLabel("DF Forward Price:");
+		lblDf.setFont(new Font("Arial", Font.BOLD, 15));
 		lblDf.setBounds(35, 270, 150, 30);
 		contentPane.add(lblDf);
 		

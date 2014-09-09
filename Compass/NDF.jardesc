@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="GBK" standalone="no"?>
+<jardesc>
+    <jar path="C:/Users/thinkpad/Desktop/NDF.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/Compass/NDF.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=Compass/src&lt;nju.compass{Login.java[Login" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="false" exportJavaFiles="true" exportOutputFolder="true">
+        <file path="/BeatBox/.project"/>
+        <javaElement handleIdentifier="=Compass/lib"/>
+        <file path="/Compass/.gitignore"/>
+        <javaElement handleIdentifier="=Compass/image"/>
+        <file path="/Compass/.classpath"/>
+        <file path="/BeatBox/.classpath"/>
+        <javaElement handleIdentifier="=Compass/src"/>
+        <folder path="/Compass/.myeclipse"/>
+        <file path="/Compass/.project"/>
+    </selectedElements>
+</jardesc>

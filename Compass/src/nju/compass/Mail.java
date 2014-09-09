@@ -34,12 +34,12 @@ public class Mail extends JFrame {
 	 */
 	public Mail(final Object [] dataSource, final GetNotificationData data, final int rowNum, final String profit, final String duration) {
 		
-		int begin = ((String) dataSource[4]).indexOf("操作说明： ", 0);                  
-		int end = ((String) dataSource[4]).indexOf("收益率", begin);                  
-		final String content = ((String) dataSource[4]).substring(begin+6, end);
+		int begin = ((String) dataSource[4]).indexOf("Arbitrage Instructions: ", 0);                  
+		int end = ((String) dataSource[4]).indexOf("Yield", begin);                  
+		final String content = ((String) dataSource[4]).substring(begin+24, end);
 		Image icon = Toolkit.getDefaultToolkit().getImage("image/image_2.jpg");   
 		setIconImage(icon);
-		setBounds(100, 100, 427, 284);
+		setBounds(100, 100, 427, 326);
 		// 设置居中显示
 		int windowWidth = getWidth();                    //获得窗口宽
         int windowHeight = getHeight();                  //获得窗口高
@@ -64,53 +64,54 @@ public class Mail extends JFrame {
 		
 		JLabel lblTheme = new JLabel("Theme:");
 		lblTheme.setBounds(20, 20, 60, 25);
-		lblTheme.setFont(new Font("微软雅黑", Font.BOLD, 12));
+		lblTheme.setFont(new Font("Arial", Font.BOLD, 12));
 		contentPane.add(lblTheme);
 		
 		textField = new JTextField();
 		textField.setEditable(false);
-		textField.setBounds(80, 20, 180, 25);
+		textField.setBounds(80, 20, 191, 25);
 		textField.setBackground(new Color(0x99, 0x99, 0x99));
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblTime = new JLabel("Time:");
-		lblTime.setFont(new Font("微软雅黑", Font.BOLD, 12));
+		lblTime.setFont(new Font("Arial", Font.BOLD, 12));
 		lblTime.setBounds(20, 50, 60, 25);
 		contentPane.add(lblTime);
 		
 		textField_1 = new JTextField();
 		textField_1.setEditable(false);
 		textField_1.setColumns(10);
-		textField_1.setBounds(80, 50, 180, 25);
+		textField_1.setBounds(80, 50, 191, 25);
 		textField_1.setBackground(new Color(0x99, 0x99, 0x99));
 		contentPane.add(textField_1);
 		
 		JLabel lblContent = new JLabel("Content:");
-		lblContent.setFont(new Font("微软雅黑", Font.BOLD, 12));
+		lblContent.setFont(new Font("Arial", Font.BOLD, 12));
 		lblContent.setBounds(20, 80, 80, 25);
 		contentPane.add(lblContent);
 		
 		textArea = new JTextArea();
+		textArea.setLineWrap(true);
 		textArea.setEditable(false);
-		textArea.setBounds(80, 80, 310, 130);
+		textArea.setBounds(80, 80, 310, 167);
 		textArea.setBackground(new Color(0x99, 0x99, 0x99));
 		contentPane.add(textArea);
 		
-		JLabel label = new JLabel("金额");
-		label.setBounds(58, 210, 40, 20);
-		label.setFont(new Font("微软雅黑", Font.BOLD, 11));
+		JLabel label = new JLabel("Amount");
+		label.setBounds(76, 257, 54, 20);
+		label.setFont(new Font("Arial", Font.BOLD, 11));
 		contentPane.add(label);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(55, 230, 54, 25);
+		textField_2.setBounds(76, 272, 54, 25);
 		textField_2.setBackground(new Color(0x99, 0x99, 0x99));
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 
 		final JComboBox<String> comboBox = new JComboBox<String>(new String[]{"￥", "$"});
-		comboBox.setBounds(4, 230, 50, 25);
+		comboBox.setBounds(4, 272, 50, 25);
 		contentPane.add(comboBox);
 		
 		JButton btnOrder = new JButton("Order");
@@ -150,7 +151,7 @@ public class Mail extends JFrame {
 				}
 			}
 		});
-		btnOrder.setBounds(146, 231, 95, 25);
+		btnOrder.setBounds(146, 272, 95, 25);
 		contentPane.add(btnOrder);
 		
 		JButton btnIgnore = new JButton("Delete");
@@ -172,7 +173,7 @@ public class Mail extends JFrame {
 				dispose();
 			}
 		});
-		btnIgnore.setBounds(287, 231, 95, 25);
+		btnIgnore.setBounds(285, 272, 95, 25);
 		contentPane.add(btnIgnore);
 		
 		textField.setText((String) dataSource[2]);

@@ -49,21 +49,22 @@ public class ShowBusiness extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder("产品信息"));
+		panel.setBorder(new TitledBorder("PRODUCT INFORMATION"));
 		panel.setBounds(36, 3, 346, 271);
 		panel.setOpaque(false);
 		panel.setLayout(null);
 		contentPane.add(panel);
 		
 		textArea = new JTextArea();
+		textArea.setLineWrap(true);
 		textArea.setEditable(false);
 		textArea.setBounds(10, 28, 326, 233);
 		textArea.setBackground(new Color(0x99, 0x99, 0x99));
 		panel.add(textArea);
 		
-		JLabel label = new JLabel("金额");
-		label.setBounds(125, 265, 40, 25);
-		label.setFont(new Font("微软雅黑", Font.BOLD, 11));
+		JLabel label = new JLabel("Amount");
+		label.setBounds(128, 265, 60, 25);
+		label.setFont(new Font("Arial", Font.PLAIN, 11));
 		contentPane.add(label);
 		
 		textField_2 = new JTextField();
@@ -115,8 +116,8 @@ public class ShowBusiness extends JFrame {
 		});
 		btnOrder.setBounds(225, 286, 100, 30);
 		contentPane.add(btnOrder);
-		textArea.setText(" 编号： " + dataSource[0] + "\n 有无本金： " + dataSource[1] + "\n 套利操作说明： " 
-				+ content + "\n 收益率： " + dataSource[3] + "\n 备注： " + addcontent + "\n 风险评估： 无风险");	
+		textArea.setText("Code： " + dataSource[0] + "\nPrincipal： " + dataSource[1] + "\nArbitrage Instructions： " 
+				+ content + "\nYield Rate： " + dataSource[3] + " ‰\nNote： " + addcontent + "\nRisk Assessment：No risk");	
 		
 		setVisible(true);
 		

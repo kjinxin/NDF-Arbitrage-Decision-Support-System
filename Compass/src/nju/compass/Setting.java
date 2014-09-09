@@ -23,6 +23,7 @@ public class Setting {
 	private JPasswordField textField_C;
 	private JComboBox<String> kind;
 	private JTextField Profit;
+	private JTextField Profit_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JComboBox<String> kind_1 = new JComboBox<String>(new String[]{"RMB", "Dollar"});
@@ -203,22 +204,38 @@ public class Setting {
 		
 		JLabel lblP = new JLabel("Expected Profit Rate:");
 		lblP.setFont(new Font("Arial", Font.PLAIN, 18));
-		lblP.setBounds(50, 110, 200, 33);
+		lblP.setBounds(50, 90, 200, 33);
 		FS.add(lblP);
 		
 		Profit = new JTextField();
 		Profit.setColumns(10);
-		Profit.setBounds(250, 110, 60, 33);
+		Profit.setBounds(250, 90, 60, 33);
 		FS.add(Profit);
 		Profit.setText(selection.get(4));
 		
 		JLabel suffix = new JLabel("¡ë");
 		suffix.setFont(new Font("Arial", Font.PLAIN, 18));
-		suffix.setBounds(310, 110, 30, 30);
+		suffix.setBounds(310, 90, 30, 30);
 		FS.add(suffix);
 		
+		JLabel lblP_1 = new JLabel("Loan rate:");
+		lblP_1.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblP_1.setBounds(50, 130, 200, 33);
+		FS.add(lblP_1);
+		
+		Profit_1 = new JTextField();
+		Profit_1.setColumns(10);
+		Profit_1.setBounds(250, 130, 60, 33);
+		FS.add(Profit_1);
+		Profit_1.setText(selection.get(4));
+		
+		JLabel suffix_1 = new JLabel("¡ë");
+		suffix_1.setFont(new Font("Arial", Font.PLAIN, 18));
+		suffix_1.setBounds(310, 130, 30, 30);
+		FS.add(suffix_1);
+		
 		JButton btnCon_2 = new JButton("Confirm");
-		btnCon_2.setBounds(300, 160, 80, 25);
+		btnCon_2.setBounds(300, 170, 80, 25);
 		FS.add(btnCon_2);
 		
 		btnCon_2.addMouseListener(new MouseAdapter() {	//½øÐÐ³äÖµ

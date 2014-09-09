@@ -35,16 +35,13 @@ public class Panel_File {
 		panel.setBounds(15, 20, 220, 614);
 		contentPane.add(panel);
 		panel.setOpaque(false);
-		//panel.setBackground(new Color(255, 255, 255, 100));
 		panel.setLayout(null);
 		panel.setBorder(new TitledBorder("   "));
 		
 		panel_1 = new JPanel();
 		panel_1.setBounds(235, 0, 860, 650);
-		//panel_1.setOpaque(false);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
-		
 		
 		// 用户信息显示
 		String RMB, dollar;
@@ -68,12 +65,15 @@ public class Panel_File {
 		if(!selection2.get(5).trim().equals(""))
 			Name = selection2.get(5).trim();
 		
+		ListData listdata = new ListData();
+		listdata.run();
+		String[] values = listdata.getValues();
 		JTextArea acc = new JTextArea();
-		acc.setFont(new Font("Arial", Font.PLAIN, 18));
+		acc.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		acc.setEditable(false);
-		acc.setText("Hi, " + Name + "\r\n\r\nRMB Balance :\n\r" + RMB 
-		+ "\r\n\r\nDollar Balance: \n\r" + dollar);
-		acc.setBounds(12, 100, 174, 231);
+		acc.setText("Hi, " + Name + "\r\n\r\nRMB Balance :\n\r￥" + RMB 
+		+ "\r\n\r\nDollar Balance: \n\r$" + dollar + "\r\n\r\nRMB-Dollar: \n\r" + values[1] + "\r\n\r\nDollar-RMB: \n\r" + values[3]);
+		acc.setBounds(12, 80, 174, 320);
 		acc.setBorder(new LineBorder(Color.DARK_GRAY, 4));
 		panel.add(acc);
 		

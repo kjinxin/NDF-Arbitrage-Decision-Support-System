@@ -32,7 +32,7 @@ public class Panel_Business {
 		Timer timer = new Timer();
 		timer.schedule(businessData, 0, 5 * 60 * 1000);
 		
-		final Object[] columnNames = {"产品代码", "有无本金", "产品期限", "收益率（‰）"};
+		final Object[] columnNames = {"Code", "Principal", "Trade deadline", "Yield rate（‰）"};
 		final Object[][] rowData = businessData.getrowData();
 		final String[] content = businessData.getcontent();
 		final String[] addcontent = businessData.getaddcontent();
