@@ -255,17 +255,17 @@ public class Chart {
         TextTitle subtitle;
         if(table.equals("forward"))
         {
-        	subtitle = new TextTitle("人民币远期外汇报价买入卖出对比", new Font("宋体l", Font.BOLD, 12));
+        	subtitle = new TextTitle("BUY AND SELL RMB FORWARD", new Font("Arial", Font.BOLD, 12));
         	subtitle.setBackgroundPaint(Color.white);
         	chart.addSubtitle(subtitle);
         }
         else if(table.equals("market"))
         {
-        	subtitle = new TextTitle("NDF行情", new Font("宋体", Font.BOLD, 12));
+        	subtitle = new TextTitle("NDF Market", new Font("Arial", Font.BOLD, 12));
         	chart.addSubtitle(subtitle);
         }
         else if(table.equals("list")) {
-        	subtitle = new TextTitle("美元现汇买入卖出", new Font("宋体", Font.BOLD, 12));
+        	subtitle = new TextTitle("Dollar-RMB Rate", new Font("Arial", Font.BOLD, 12));
         	chart.addSubtitle(subtitle);
         }
 
@@ -287,7 +287,7 @@ public class Chart {
         xylineandshaperenderer.setBaseShapesVisible(true);
         // 设置曲线显示各项数据点的值
         XYItemRenderer xyitem = plot.getRenderer();
-        xyitem.setBaseItemLabelsVisible(true);
+       // xyitem.setBaseItemLabelsVisible(true);
         xyitem.setBasePositiveItemLabelPosition(new ItemLabelPosition(
                 ItemLabelAnchor.OUTSIDE12, TextAnchor.BASELINE_LEFT));
         xyitem.setBaseItemLabelGenerator(new StandardXYItemLabelGenerator());
@@ -295,7 +295,7 @@ public class Chart {
         plot.setRenderer(xyitem);
 
         // 设置X轴日期显示的格式
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd");
         DateAxis axis = (DateAxis) plot.getDomainAxis();
         axis.setDateFormatOverride(format);// 设置x轴数据单位以×年×月方式显示
 

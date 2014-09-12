@@ -126,12 +126,12 @@ public class Panel_Home extends java.util.TimerTask {
 		
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 			if (Panel_Home.this.row == row ) {
-				this.setBackground(new Color(0x5c, 0xac, 0xee));
+				this.setBackground(Style.focus);
 			} else {
 				if (row % 2 == 0) 
-					this.setBackground(new Color(0x33, 0x33, 0x33));
+					this.setBackground(Style.darkGrey);
 				else
-					this.setBackground(new Color(0x40, 0x40, 0x40));
+					this.setBackground(Style.lightGrey);
 			}
 			// 设置字体
 			this.setFont(new Font("微软雅黑", Font.BOLD, 17)); 
@@ -139,13 +139,13 @@ public class Panel_Home extends java.util.TimerTask {
 			// 设置每一列的颜色
 			switch (column % 3) {
 			case 0:
-				this.setForeground(new Color(0x6c, 0xc6, 0x44));
+				this.setForeground(Style.green);
 				break;
 			case 1:
-				this.setForeground(new Color(0xbd, 0x2c, 0x00));
+				this.setForeground(Style.red);
 				break;
 			case 2:
-				this.setForeground(Color.white);
+				this.setForeground(Style.white);
 				break;
 			}
 		    this.setText((value == null) ? "" : value.toString());

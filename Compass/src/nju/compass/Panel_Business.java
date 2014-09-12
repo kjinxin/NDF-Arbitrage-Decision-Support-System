@@ -2,7 +2,6 @@ package nju.compass;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.Timer;
 
 import javax.swing.*;
@@ -10,9 +9,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
-
-import database.Select;
-import database.Update;
 import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 public class Panel_Business {
@@ -36,6 +32,7 @@ public class Panel_Business {
 		final Object[][] rowData = businessData.getrowData();
 		final String[] content = businessData.getcontent();
 		final String[] addcontent = businessData.getaddcontent();
+
 		table = new JTable (rowData, columnNames){ 
 			@Override
 			public boolean isCellEditable( int row, int column ) { 
@@ -61,7 +58,7 @@ public class Panel_Business {
 		// 设置表格属性
 		table.setPreferredScrollableViewportSize(new Dimension(1100, 680));//设置表格的大小 
 		table.setRowHeight (30);//设置每行的高度为30
-		table.setRowMargin (1);//设置相邻两行单元格的距离
+		table.setRowMargin (0);//设置相邻两行单元格的距离
 		table.setCellSelectionEnabled(false);
 		table.setRowSelectionAllowed (true);//设置可否被选择.默认为false  
 			
@@ -122,30 +119,30 @@ public class Panel_Business {
 		
 		public Component getTableCellRendererComponent(JTable table,Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 			if (Panel_Business.this.row == row ) {
-				this.setBackground(new Color(0x5c, 0xac, 0xee));
+				this.setBackground(Style.focus);
 			} else {
 				if (row % 2 == 0) 
-					this.setBackground(new Color(0x33, 0x33, 0x33));
+					this.setBackground(Style.lightGrey);
 				else
-					this.setBackground(new Color(0x40, 0x40, 0x40));
+					this.setBackground(Style.darkGrey);
 			}
 			// 设置字体
 			this.setFont(new Font("微软雅黑", Font.BOLD, 17)); 
 			switch (column % 4) {
 			case 0:
-				this.setForeground(Color.white);
+				this.setForeground(Style.white);// ?
 				break;
 			case 1:
-				this.setForeground(Color.yellow);
+				this.setForeground(Style.yellow);
 				break;
 			case 2:
-				this.setForeground(Color.blue);
+				this.setForeground(Style.blue);
 				break;
 			case 3: 
 				if (value != null)
 				if (((String) value).charAt(0) == '-')
-					this.setForeground(Color.green);
-				else this.setForeground(Color.red);
+					this.setForeground(Style.green);
+				else this.setForeground(Style.red);
 				break;
 			}
 			

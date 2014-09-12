@@ -4,7 +4,11 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -24,14 +28,14 @@ public class Panel_Notification {
 	int row = 0; 
 	int column = 0; 
 	public void run() {
-		contentPane = new JPanel();
-//		{
-//			public void paintComponent(Graphics g){
-//				  try{
-//				    g.drawImage(ImageIO.read(new    File("image/image_2.jpg")),0
-//				                            ,0,this.getWidth(),this.getHeight(),this);
-//				   }catch(IOException e){}
-//				  }};
+		contentPane = new JPanel()
+		{
+			public void paintComponent(Graphics g){
+				  try{
+				    g.drawImage(ImageIO.read(new    File("image/pic_test2.jpg")),0
+				                            ,0,this.getWidth(),this.getHeight(),this);
+				   }catch(IOException e){}
+				  }};
 		contentPane.setBorder(new TitledBorder("   "));
 		contentPane.setBounds(-4, 24, 1106, 660);
 		//contentPane.setBorder(new EmptyBorder(1,1,1,1));
@@ -148,12 +152,12 @@ public class Panel_Notification {
 				
 				public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 					if (Panel_Notification.this.row == row ) {
-						this.setBackground(new Color(0x5c, 0xac, 0xee));
+						this.setBackground(Style.focus);
 					} else {
 						if (row % 2 == 0) 
-							this.setBackground(new Color(0x33, 0x33, 0x33));
+							this.setBackground(Style.darkGrey);
 						else
-							this.setBackground(new Color(0x40, 0x40, 0x40));
+							this.setBackground(Style.lightGrey);
 					}
 					
 					// 设置字体
@@ -162,13 +166,13 @@ public class Panel_Notification {
 					// 设置每一列的颜色
 					switch (column % 3) {
 					case 0:
-						this.setForeground(new Color(0x6c, 0xc6, 0x44));
+						this.setForeground(Style.green);
 						break;
 					case 1:
-						this.setForeground(new Color(0xbd, 0x2c, 0x00));
+						this.setForeground(Style.red);
 						break;
 					case 2:
-						this.setForeground(Color.white);
+						this.setForeground(Style.white);
 						break;
 					}
 				    this.setText((value == null) ? "" : value.toString());

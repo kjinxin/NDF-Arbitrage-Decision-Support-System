@@ -1,9 +1,5 @@
 package nju.compass;
 
-import java.awt.Toolkit;
-
-import javafx.scene.image.Image;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;

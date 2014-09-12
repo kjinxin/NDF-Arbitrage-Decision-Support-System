@@ -43,7 +43,7 @@ public class Home extends JFrame {
 	 * Create the frame.
 	 */
 	public Home() {
-		Image icon = Toolkit.getDefaultToolkit().getImage("image/image_2.jpg");   
+		Image icon = Toolkit.getDefaultToolkit().getImage("image/icon.png");   
 		setIconImage(icon);
 		setResizable(false);		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

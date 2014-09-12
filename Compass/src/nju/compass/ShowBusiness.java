@@ -24,7 +24,7 @@ public class ShowBusiness extends JFrame {
 	 * Create the frame.
 	 */
 	public ShowBusiness(final String content, final Object [] dataSource, String addcontent) {
-		Image icon = Toolkit.getDefaultToolkit().getImage("image/image_2.jpg");   
+		Image icon = Toolkit.getDefaultToolkit().getImage("image/icon.png");   
 		setIconImage(icon);
 		setBounds(100, 100, 420, 348);
 		// …Ë÷√æ”÷–œ‘ æ

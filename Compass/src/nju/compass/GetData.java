@@ -198,7 +198,7 @@ public class GetData extends java.util.TimerTask {
 			rowData[rowNumber][3] = df.format(1000.0 * (B * (1 + R * n / 12) - A * (1 + r * n / 12)));
 			content[rowNumber] = "At sight for RMB loans, with credit for RMB into Dollars in the bank. At the same time" 
 					+ time[i] + "s' equivalence dollars to buy the RMB.";
-					addcontent[rowNumber] = "This method successfully carry premise for forward contracts in the dollars to rise in" 
+			addcontent[rowNumber] = "This method successfully carry premise for forward contracts in the dollars to rise in" 
 					+ time[i] + "forward contracts to buy RMB to sell within the territory of the Dollar.";
 			rowNumber ++;
 		}
@@ -220,7 +220,7 @@ public class GetData extends java.util.TimerTask {
 					+ time[i] + "in the future, the duration of the loan for the interval months. Now a" + time[i] +
 					"period in sell the dollars forward contracts to buy the yuan, a" + time[j] + 
 					"period forward contracts to buy dollars to sell within the territory of the equivalent of RMB.";
-					addcontent[rowNumber] = "In interval months period, the RMB in the bank, with current term financial product yield increment.";
+			addcontent[rowNumber] = "In interval months period, the RMB in the bank, with current term financial product yield increment.";
 			rowNumber ++;
 			}
 		}
@@ -241,14 +241,39 @@ public class GetData extends java.util.TimerTask {
 					+ time[i] + "in the future, the duration of the loan for the interval months. Now a" + time[i] +
 					"period in sell the RMB forward contracts to buy the dollars, a" + time[j] + 
 					"period forward contracts to buy yuan to sell within the territory of the equivalent of dollars.";
-					addcontent[rowNumber] = "In interval months period, the dollars in the bank, with current term financial product yield increment.";
+			addcontent[rowNumber] = "In interval months period, the dollars in the bank, with current term financial product yield increment.";
 			rowNumber ++;
 			}
 		}
-		for (int i = 0; i < rowNumber; i++)
-			for (int j = 0; j < 4; j++)
-				rowData_t[i][j] = rowData[i][j];
 		
+		//System.out.print("{");
+		for (int i = 0; i < rowNumber; i++)
+		{
+			//System.out.print("{");
+			for (int j = 0; j < 4; j++)
+			{
+				rowData_t[i][j] = rowData[i][j];
+				//System.out.print("\"" + rowData[i][j] + "\"");
+				//if (j != 3) System.out.print(",");
+			}
+			//System.out.println("},");
+		}
+		/*
+		System.out.println("}");
+		System.out.print("{");
+		for (int i = 0; i < rowNumber; i++)
+		{
+			System.out.println("\"" + content[i] + "\",");
+		}
+		System.out.println("}");
+		System.out.print("{");
+		for (int i = 0; i < rowNumber; i++)
+		{
+			System.out.println("\"" + addcontent[i] + "\",");
+		}
+		System.out.println("}");
+		*/
+		System.out.println(rowNumber + "jinxin");
 		String Name = User.username;
 		String[] elements = {Name};
 		String[] property = {"name"};

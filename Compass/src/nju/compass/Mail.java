@@ -37,7 +37,7 @@ public class Mail extends JFrame {
 		int begin = ((String) dataSource[4]).indexOf("Arbitrage Instructions: ", 0);                  
 		int end = ((String) dataSource[4]).indexOf("Yield", begin);                  
 		final String content = ((String) dataSource[4]).substring(begin+24, end);
-		Image icon = Toolkit.getDefaultToolkit().getImage("image/image_2.jpg");   
+		Image icon = Toolkit.getDefaultToolkit().getImage("image/icon.png");   
 		setIconImage(icon);
 		setBounds(100, 100, 427, 326);
 		// …Ë÷√æ”÷–œ‘ æ

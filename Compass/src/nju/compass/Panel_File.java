@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import java.awt.*;
@@ -23,7 +22,7 @@ public class Panel_File {
 		contentPane = new JPanel() {
 			public void paintComponent(Graphics g){
 				  try{
-				    g.drawImage(ImageIO.read(new    File("image/pic_9.png")),0
+				    g.drawImage(ImageIO.read(new    File("image/pic_test1.jpg")),0
 				                            ,0,this.getWidth(),this.getHeight(),this);
 				   }catch(IOException e){}
 				  }};
@@ -74,7 +73,7 @@ public class Panel_File {
 		acc.setText("Hi, " + Name + "\r\n\r\nRMB Balance :\n\r£¤" + RMB 
 		+ "\r\n\r\nDollar Balance: \n\r$" + dollar + "\r\n\r\nRMB-Dollar: \n\r" + values[1] + "\r\n\r\nDollar-RMB: \n\r" + values[3]);
 		acc.setBounds(12, 80, 174, 320);
-		acc.setBorder(new LineBorder(Color.DARK_GRAY, 4));
+		//acc.setBorder(new LineBorder(Color.DARK_GRAY, 4));
 		panel.add(acc);
 		
 		JButton btnZhuxiao = new JButton("Log out");

@@ -8,7 +8,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
@@ -27,7 +26,7 @@ public class Panel_Deal {
 		contentPane = new JPanel(){
 			public void paintComponent(Graphics g){
 			  try{
-			    g.drawImage(ImageIO.read(new    File("image/pic_1.jpg")),0
+			    g.drawImage(ImageIO.read(new    File("image/pic_test2.jpg")),0
 			                            ,0,this.getWidth(),this.getHeight(),this);
 			   }catch(IOException e){}
 			  }};
@@ -68,12 +67,12 @@ public class Panel_Deal {
 		// 设置表格属性
 				table.setPreferredScrollableViewportSize(new Dimension(1100, 680));//设置表格的大小 
 				table.setRowHeight (30);//设置每行的高度为30
-				table.setRowMargin (1);//设置相邻两行单元格的距离
+				table.setRowMargin (0);//设置相邻两行单元格的距离
 				table.setCellSelectionEnabled(false);
 				table.setRowSelectionAllowed (true);//设置可否被选择.默认为false  
 					
 				// 设置字体
-				table.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 19));   // 表头
+				table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 19));   // 表头
 				table.getTableHeader().setBackground(Color.black);
 				table.getTableHeader().setForeground(Color.black);
 				table.getTableHeader().setResizingAllowed(false);
@@ -91,7 +90,7 @@ public class Panel_Deal {
 				
 				// 设置背景和前景色以及网格线
 			    table.setShowGrid(false);
-				table.setBackground(Color.black);
+				table.setBackground(Style.darkGrey);
 				
 				// 添加鼠标移动监听, 以及设置列渲染器
 				CellRendererAndMouseListener rendererAndListener = new CellRendererAndMouseListener();
@@ -129,24 +128,24 @@ public class Panel_Deal {
 				
 				public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 					if (Panel_Deal.this.row == row ) {
-						this.setBackground(new Color(0x5c, 0xac, 0xee));
+						this.setBackground(Style.focus);
 					} else {
 						if (row % 2 == 0) 
-							this.setBackground(new Color(0x33, 0x33, 0x33));
+							this.setBackground(Style.darkGrey);
 						else
-							this.setBackground(new Color(0x40, 0x40, 0x40));
+							this.setBackground(Style.lightGrey);
 					}
 					
 					// 设置字体
-					this.setFont(new Font("微软雅黑", Font.BOLD, 17)); 
+					this.setFont(new Font("Arial", Font.BOLD, 17)); 
 					
 					// 设置每一列的颜色
 					switch (column % 3) {
 					case 0:
-						this.setForeground(new Color(0x6c, 0xc6, 0x44));
+						this.setForeground(Style.red);
 						break;
 					case 1:
-						this.setForeground(new Color(0xbd, 0x2c, 0x00));
+						this.setForeground(Style.green);
 						break;
 					case 2:
 						this.setForeground(Color.white);

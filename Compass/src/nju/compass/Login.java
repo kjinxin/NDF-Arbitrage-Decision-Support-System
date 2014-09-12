@@ -53,7 +53,7 @@ public class Login {
 	 */
 	private void initialize() {
 		frame = new JFrame("Compass :: online service");
-		Image icon = Toolkit.getDefaultToolkit().getImage("image/image_2.jpg");   
+		Image icon = Toolkit.getDefaultToolkit().getImage("image/icon.png");   
 		frame.setIconImage(icon);
 		frame.setResizable(false);
 		JPanel contentPane = new JPanel(){
