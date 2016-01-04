@@ -17,12 +17,12 @@ public class Create {
 			stmt = con.createStatement();
 			
 			String create1 = "create table deal_" + name +
-							" (order_time char(20), settle_time char(20), operation char(100),"
+							" (order_time char(20), settle_time char(20), operation text,"
 							+ " dollar double, RMB double, profit double);";
 			
 			String create2 = "create table noti_" + name +
-							" (mark bit, title char(20), time char(16), number int,"
-							+ " profit double, content char(100), time_limit char(2),"
+							" (mark bit, title char(255), time char(16), number int,"
+							+ " profit double, content text, time_limit char(2),"
 							+ " unique(number, profit));";
 			
 			System.out.println(create1);

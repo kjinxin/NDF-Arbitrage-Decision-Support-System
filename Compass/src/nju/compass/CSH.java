@@ -49,7 +49,7 @@ public class CSH extends JFrame {
 		JLabel contentPane = new JLabel(){
 			public void paintComponent(Graphics g){
 				  try{
-				    g.drawImage(ImageIO.read(new    File("image/image_2.jpg")),0
+				    g.drawImage(ImageIO.read(new    File("image/CSH.jpg")),0
 				                            ,0,this.getWidth(),this.getHeight(),this);
 				   }catch(IOException e){}
 				  }};

@@ -39,7 +39,7 @@ public class ShowBusiness extends JFrame {
 		contentPane = new JPanel(){
 			public void paintComponent(Graphics g){
 				  try{
-				    g.drawImage(ImageIO.read(new    File("image/pic_7.jpg")),0
+				    g.drawImage(ImageIO.read(new    File("image/pic_test1.jpg")),0
 				                            ,0,this.getWidth(),this.getHeight(),this);
 				   }catch(IOException e){}
 				  }};

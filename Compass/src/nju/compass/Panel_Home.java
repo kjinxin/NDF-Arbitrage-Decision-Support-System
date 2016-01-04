@@ -70,7 +70,7 @@ public class Panel_Home extends java.util.TimerTask {
 		table.setRowSelectionAllowed (true);//设置可否被选择.默认为false  
 			
 		// 设置字体
-		table.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 19));   // 表头
+		table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 19));   // 表头
 		table.getTableHeader().setBackground(Color.black);
 		table.getTableHeader().setForeground(Color.black);
 		table.getTableHeader().setResizingAllowed(false);

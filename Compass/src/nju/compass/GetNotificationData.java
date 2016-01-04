@@ -20,32 +20,34 @@ public class GetNotificationData {
 		ArrayList<String> result = new ArrayList<String>();
 		String table = "noti_" + User.username;
 		int count = Select.SelectAll(table, result);
-		rowNumber = result.size()/count;
-		String[][] rowData = new String[rowNumber][5];
-		for(int i = 0 ; i < rowNumber; i++)
-		{
-			rowData[i][0] = i + 1 + "";
-			if(result.get(count * (rowNumber - i - 1)).equals("0"))
-				rowData[i][1] = "unread";
-			else
-				rowData[i][1] = "read";
-			rowData[i][2] = result.get(count * (rowNumber - i - 1) + 1);
-			rowData[i][3] = result.get(count * (rowNumber - i - 1) + 2);
-			rowData[i][4] = "Number: " + result.get(count * (rowNumber - i - 1) + 3)  + "\nArbitrage Instructions: " + result.get(count * (rowNumber - i - 1) + 5)
-					+ "\nYield Rate: " + result.get(count * (rowNumber - i - 1) + 4);
-		}
-		if (t == 1) {
-			rowData_t = new String [rowNumber][5];
-		} 
-		else {
-			for (int i = 0; i < 5; i++) {
-				rowData_t[rowNumber][i] = "";
+		if (count != 0) {
+			rowNumber = result.size()/count;
+			String[][] rowData = new String[rowNumber][5];
+			for(int i = 0 ; i < rowNumber; i++)
+			{
+				rowData[i][0] = i + 1 + "";
+				if(result.get(count * (rowNumber - i - 1)).equals("0"))
+					rowData[i][1] = "unread";
+				else
+					rowData[i][1] = "read";
+				rowData[i][2] = result.get(count * (rowNumber - i - 1) + 1);
+				rowData[i][3] = result.get(count * (rowNumber - i - 1) + 2);
+				rowData[i][4] = "Number: " + result.get(count * (rowNumber - i - 1) + 3)  + "\nArbitrage Instructions: " + result.get(count * (rowNumber - i - 1) + 5)
+						+ "\nYield Rate: " + result.get(count * (rowNumber - i - 1) + 4);
 			}
+			if (t == 1) {
+				rowData_t = new String [rowNumber][5];
+			} 
+			else {
+				for (int i = 0; i < 5; i++) {
+					rowData_t[rowNumber][i] = "";
+				}
+			}
+			for (int i = 0; i < rowNumber; i++)
+				for (int j = 0; j < 5; j++)
+					rowData_t[i][j] = rowData[i][j];
+			contentPane_t.repaint();
 		}
-		for (int i = 0; i < rowNumber; i++)
-			for (int j = 0; j < 5; j++)
-				rowData_t[i][j] = rowData[i][j];
-		contentPane_t.repaint();
 	}
 
 	public Object [][] getrowData() {

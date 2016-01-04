@@ -9,7 +9,7 @@ import java.util.Timer;
 import database.Insert;
 import database.Select;
 
-public class GetData extends java.util.TimerTask {
+public class GetData1 extends java.util.TimerTask {
 	private String [][] rowData_t;
 	private String [] content;
 	private String [] addcontent;
@@ -32,9 +32,9 @@ public class GetData extends java.util.TimerTask {
 	private ListData listData;
 	
 	public static void main(String [] args) {
-		new GetData();
+		new GetData1();
 	}
-	public GetData() {
+	public GetData1() {
 		marketData = new MarketData();
 		forwardData = new ForwardData();
 		listData = new ListData();
@@ -89,7 +89,7 @@ public class GetData extends java.util.TimerTask {
 			n = dftime[i];
 			rowData[rowNumber][3] = df.format(1000.0 * (A * (1 + r * n / 12) - B) / A);
 			content[rowNumber] = "Prompt settlement of exchange, and at the same time forward contracts sold within the territory of" 
-			+ time[i] + "equivalence the RMB to buy Dollars.";
+			+ time[i] + "s'equivalence the RMB to buy Dollars.";
 			addcontent[rowNumber] = "This method successfully carry premise for forward contracts in the Chinese currency to rise in" 
 			+ time[i] + "later.";
 			rowNumber++;
@@ -105,7 +105,7 @@ public class GetData extends java.util.TimerTask {
 			n = dftime[i];
 			rowData[rowNumber][3] = df.format(1000.0 * (B * (1 + R * n / 12) - A) / A);
 			content[rowNumber] = "Prompt settlement of exchange and at the same time forward contracts sold within the territory of" 
-			+ time[i] + "equivalence dollars to buy the RMB.";
+			+ time[i] + "s' equivalence dollars to buy the RMB.";
 			addcontent[rowNumber] = "This method successfully carry premise for forward contracts in the dollars to rise in" 
 			+ time[i] + "later.";
 			rowNumber++;
@@ -148,23 +148,6 @@ public class GetData extends java.util.TimerTask {
 			}
 		}
 		// 代号五
-		/*
-		for (int i = 0; i < 6; i++) {
-			rowData[rowNumber][0] = "00" + "05" + code[i];
-			rowData[rowNumber][1] = "Yes";
-			rowData[rowNumber][2] = dftype[i];
-			A = Double.parseDouble(list[1]);
-			B = Double.parseDouble(forward[i][2]);
-			R = WMP[i];
-			R = dollardeposit[i];
-			n = dftime[i];
-			rowData[rowNumber][3] = df.format(1000.0 * (B * (1 + R * n / 12) - A) / A);
-			content[rowNumber] = "Prompt settlement of exchange, and at the same time forward contracts sold within the territory of \n" 
-			+ time[i] + "s' equivalence dollars to buy the RMB.";
-			addcontent[rowNumber] = "This method successfully carry premise for forward contracts in the dollars to rise in\n " 
-			+ time[i] + "later.";
-			rowNumber++;
-		}*/
 		// 代号六
 		// 代号七
 		//*************** 代号八  ***********************
@@ -197,7 +180,7 @@ public class GetData extends java.util.TimerTask {
 			R = dollardeposit[i];
 			rowData[rowNumber][3] = df.format((B * (1 + R * n / 12) - A * (1 + r * n / 12)));
 			content[rowNumber] = "At sight for RMB loans, with credit for RMB into Dollars in the bank. At the same time" 
-					+ time[i] + "equivalence dollars to buy the RMB.";
+					+ time[i] + "s' equivalence dollars to buy the RMB.";
 			addcontent[rowNumber] = "This method successfully carry premise for forward contracts in the dollars to rise in" 
 					+ time[i] + "forward contracts to buy RMB to sell within the territory of the Dollar.";
 			rowNumber ++;
@@ -245,70 +228,15 @@ public class GetData extends java.util.TimerTask {
 			rowNumber ++;
 			}
 		}
-		
-		//System.out.print("{");
+		System.out.println(rowNumber + "jinxinafaoiegfoaij");
 		for (int i = 0; i < rowNumber; i++)
 		{
-			//System.out.print("{");
 			for (int j = 0; j < 4; j++)
 			{
 				rowData_t[i][j] = rowData[i][j];
-				//System.out.print("\"" + rowData[i][j] + "\"");
-				//if (j != 3) System.out.print(",");
-			}
-			//System.out.println("},");
-		}
-		/*
-		System.out.println("}");
-		System.out.print("{");
-		for (int i = 0; i < rowNumber; i++)
-		{
-			System.out.println("\"" + content[i] + "\",");
-		}
-		System.out.println("}");
-		System.out.print("{");
-		for (int i = 0; i < rowNumber; i++)
-		{
-			System.out.println("\"" + addcontent[i] + "\",");
-		}
-		System.out.println("}");
-		*/
-		
-		System.out.println(rowNumber + "jinxin");
-		String Name = User.username;
-		String[] elements = {Name};
-		String[] property = {"name"};
-		String table = "member";
-		String[] type = {"char"};
-		String[] restraints = {"="};
-		ArrayList<String> selection = new ArrayList<String>();
-		Select.SelectElement(elements, property, table, type, restraints, selection);
-		String period = selection.get(3).trim();	//用户设定的时间期限
-		String rate = selection.get(4).trim();		//用户设定的指定收益率
-		for(int i = 0; i < rowNumber; i++)
-		{
-			if(rowData[i][1].equals("无") || (period.equals("") && rate.equals("0")))
-			{
-				if(Double.parseDouble(rowData[i][3]) > 0)
-				{
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-					String date=sdf.format(new Date());
-					String[] values = {"0", "Crucial Arbitrary Chance！", date, rowData[i][0], rowData[i][3], content[i], rowData[i][2]};
-					Insert.InsertNotification(values, Name);
-				}
-			}
-			else
-			{
-				if(period.equals(rowData[i][2]) && 
-						Double.parseDouble(rowData[i][3]) > Double.parseDouble(rate))	//满足用户设置的条件
-				{
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
-					String date=sdf.format(new Date());
-					String[] values = {"0", "Crucial Arbitrary Chance！", date, rowData[i][0], rowData[i][3], content[i], rowData[i][2]};
-					Insert.InsertNotification(values, Name);
-				}
 			}
 		}
+
 	}
 	
 	

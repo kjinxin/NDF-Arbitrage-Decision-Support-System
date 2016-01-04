@@ -11,6 +11,4 @@ public class Style {
 	final public static Color darkGrey = new Color(0x30, 0x30, 0x30);
 	final public static Color lightGrey = new Color(0x40, 0x40, 0x40);
 	final public static Color focus = new Color(0x5c, 0xac, 0xee);
-	
-
 }

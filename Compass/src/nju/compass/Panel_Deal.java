@@ -38,7 +38,7 @@ public class Panel_Deal {
 		contentPane.setLayout(null);
 		
 		dataSource = new GetDealData();
-		columnNames = new Object[] {"Number", "Order Time", "settlement Time", "Arbitrage instructions", "Amount（￥）", "Amount（$）", "Yield Rate(‰)"};
+		columnNames = new Object[] {"Number", "Order Time", "settlement Time", "Arbitrage instructions", "Amount(￥)", "Amount($)", "Yield Rate(‰)"};
 		rowData = dataSource.getrowData();
 		table = new JTable (rowData, columnNames){ 
 			@Override
@@ -48,7 +48,7 @@ public class Panel_Deal {
 		}; 
 		
 		// 设置表格宽度
-		int [] width = {80, 140, 140, 320, 100, 100, 120};
+		int [] width = {80, 140, 160, 280, 120, 120, 140};
 		table.setColumnModel(getColumn(table, width));
 		// double click to respond
 		table.addMouseListener(new MouseAdapter() {
@@ -72,7 +72,7 @@ public class Panel_Deal {
 				table.setRowSelectionAllowed (true);//设置可否被选择.默认为false  
 					
 				// 设置字体
-				table.getTableHeader().setFont(new Font("Arial", Font.BOLD, 19));   // 表头
+				table.getTableHeader().setFont(new Font("微软雅黑", Font.BOLD, 19));   // 表头
 				table.getTableHeader().setBackground(Color.black);
 				table.getTableHeader().setForeground(Color.black);
 				table.getTableHeader().setResizingAllowed(false);
